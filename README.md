@@ -403,4 +403,4 @@ Configure your domain’s DNS to point to your deployment
 
 Most hosting platforms (e.g. Vercel, Netlify) provide easy custom domain setup in their dashboards
 
->>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
+>Made by Laukik And Hem
