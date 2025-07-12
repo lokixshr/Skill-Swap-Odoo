@@ -1,9 +1,7 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { NavLink } from "react-router-dom";
 import { Users, BookOpen, Clock, Star, ArrowRight, Globe, Shield } from "lucide-react";
-
 const Index = () => {
   const features = [{
     icon: Users,
@@ -30,7 +28,6 @@ const Index = () => {
     title: "Safe & Secure",
     description: "Protected environment with verified profiles and secure communication channels"
   }];
-
   const stats = [{
     number: "10,000+",
     label: "Active Learners"
@@ -44,9 +41,7 @@ const Index = () => {
     number: "4.9",
     label: "Average Rating"
   }];
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Brand Header */}
       <header className="px-6 py-8">
         <div className="max-w-7xl mx-auto">
@@ -93,22 +88,7 @@ const Index = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 px-6 border-t border-border">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-muted-foreground font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* Features Section */}
       <section className="py-20 px-6">
@@ -123,8 +103,7 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="shadow-card hover:shadow-card-hover transition-all duration-300 group">
+            {features.map((feature, index) => <Card key={index} className="shadow-card hover:shadow-card-hover transition-all duration-300 group">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors duration-200">
@@ -138,8 +117,7 @@ const Index = () => {
                     {feature.description}
                   </p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -158,19 +136,18 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[{
-              step: "01",
-              title: "Create Your Profile",
-              description: "List the skills you can teach and what you'd like to learn"
-            }, {
-              step: "02",
-              title: "Find Your Match",
-              description: "Browse available skills and connect with compatible partners"
-            }, {
-              step: "03",
-              title: "Start Learning",
-              description: "Schedule sessions and begin your skill exchange journey"
-            }].map((step, index) => (
-              <div key={index} className="text-center relative">
+            step: "01",
+            title: "Create Your Profile",
+            description: "List the skills you can teach and what you'd like to learn"
+          }, {
+            step: "02",
+            title: "Find Your Match",
+            description: "Browse available skills and connect with compatible partners"
+          }, {
+            step: "03",
+            title: "Start Learning",
+            description: "Schedule sessions and begin your skill exchange journey"
+          }].map((step, index) => <div key={index} className="text-center relative">
                 <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6">
                   {step.step}
                 </div>
@@ -180,13 +157,10 @@ const Index = () => {
                 <p className="text-muted-foreground">
                   {step.description}
                 </p>
-                {index < 2 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full">
+                {index < 2 && <div className="hidden md:block absolute top-8 left-full w-full">
                     <ArrowRight className="h-6 w-6 text-muted-foreground mx-auto" />
-                  </div>
-                )}
-              </div>
-            ))}
+                  </div>}
+              </div>)}
           </div>
         </div>
       </section>
@@ -231,8 +205,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
