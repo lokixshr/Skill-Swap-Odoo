@@ -6,15 +6,6 @@ Team Size: 2
 Team Leader: Laukik Dharmeshkumar Rajput (BlockChain + Fullstack Developer)
 Member 1: Hem Ajit Patel (Machine Learning + Fullstack Developoer)
   
-**Tech Stack**:  
-- Vite  
-- TypeScript  
-- React  
-- Tailwind CSS  
-- shadcn-ui  
-
----
-
 ## 🚀 Getting Started (Local Development)
 
 To run this project locally, make sure you have **Node.js** and **npm** installed.
@@ -38,6 +29,45 @@ npm install
 npm run dev
 ```
 The development server will start, and the app will be live at http://localhost:5173 (or another port shown in the terminal).
+
+---
+
+## 🧪 Tech Stack Overview
+
+Our platform is built using a modern, scalable, and developer-friendly stack:
+
+### 🔷 Frontend (Client)
+- **React 18** – Fast, declarative UI with modern hooks and component-based architecture
+- **TypeScript** – Ensures type safety and better developer tooling
+- **Vite** – Ultra-fast build tool and dev server for modern React apps
+- **Tailwind CSS** – Utility-first CSS framework for custom, responsive design
+- **shadcn/ui** – Accessible and beautifully styled component primitives for React
+- **Zustand** – Lightweight state management (better DX than Redux for small/medium apps)
+- **React Router DOM** – Seamless client-side routing
+
+### ⚙️ Backend (Server)
+- **Node.js + Express** – Robust, minimalist backend framework
+- **MongoDB + Mongoose** – Flexible, document-based NoSQL database with schema modeling
+- **JWT (JSON Web Tokens)** – For secure user authentication and session management
+- **Cloudinary** – Handles image uploads (profile photos) and optimizations
+
+### 🛠️ DevOps & Tooling
+- **ESLint + Prettier** – Ensures code quality and consistent formatting
+- **Husky + lint-staged** – Git hooks for pre-commit checks
+- **PM2** – Process manager for Node.js apps in production
+- **Docker (optional)** – Containerization for consistent environments (future-proofing)
+
+### 🚀 Deployment
+- **Vercel** – Zero-config deployment for frontend with custom domain support
+- **Render / Railway** – Free & scalable hosting for Node.js backend
+- **GitHub Actions** – Automate build & deploy workflows
+
+### 🔐 Admin & Monitoring
+- **Admin Panel (Custom React + Tailwind)** – Manage users, swaps, and reports
+- **MongoDB Atlas Monitoring** – Built-in dashboard for tracking queries and stats
+- **LogRocket / Sentry (optional)** – Frontend and backend error tracking
+
+---
 
 ## 🧩 Editing the Code
 
