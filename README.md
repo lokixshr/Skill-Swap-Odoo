@@ -1,6 +1,6 @@
 # Skill Swap Odoo
 
-##Team Information:
+## Team Information:
 Team Name: CodeBloodedDuo
 Team Size: 2
 Team Leader: Laukik Dharmeshkumar Rajput (BlockChain + Fullstack Developer)
