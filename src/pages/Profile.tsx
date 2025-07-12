@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+<<<<<<< HEAD
 import { User, Mail, Phone, MapPin, Edit, Save, Camera, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { auth } from "@/lib/firebase";
@@ -25,11 +26,19 @@ const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState<ProfileErrors>({});
+=======
+import { User, Mail, Phone, MapPin, Edit, Save, Camera } from "lucide-react";
+import { useState } from "react";
+
+const Profile = () => {
+  const [isEditing, setIsEditing] = useState(false);
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
   const [profileData, setProfileData] = useState({
     name: "John Doe",
     email: "john.doe@example.com",
     phone: "+1 (555) 123-4567",
     location: "San Francisco, CA",
+<<<<<<< HEAD
     website: "",
     bio: "Passionate learner and teacher. I love sharing knowledge about web development and learning new skills from others in the community.",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
@@ -104,6 +113,22 @@ const Profile = () => {
     if (user) {
       await setDoc(doc(db, "users", user.uid), profileData, { merge: true });
     }
+=======
+    bio: "Passionate learner and teacher. I love sharing knowledge about web development and learning new skills from others in the community.",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+  });
+
+  const skills = [
+    { name: "React Development", level: "Advanced", rating: 4.8, students: 15 },
+    { name: "Guitar Lessons", level: "Intermediate", rating: 4.6, students: 8 },
+    { name: "Photography", level: "Beginner", rating: 4.2, students: 3 },
+  ];
+
+  const handleSave = () => {
+    setIsEditing(false);
+    // Here you would typically save to backend
+    console.log("Profile saved:", profileData);
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -113,6 +138,7 @@ const Profile = () => {
     }));
   };
 
+<<<<<<< HEAD
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -121,6 +147,8 @@ const Profile = () => {
     );
   }
 
+=======
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
   return (
     <div className="p-6 max-w-4xl mx-auto">
       {/* Header */}
@@ -191,7 +219,10 @@ const Profile = () => {
                         disabled={!isEditing}
                         className={!isEditing ? "bg-muted" : ""}
                       />
+<<<<<<< HEAD
                       {errors.name && <div className="text-red-500 text-xs mt-1">{errors.name}</div>}
+=======
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
                     </div>
                     <div>
                       <Label htmlFor="email">Email</Label>
@@ -203,6 +234,7 @@ const Profile = () => {
                         disabled={!isEditing}
                         className={!isEditing ? "bg-muted" : ""}
                       />
+<<<<<<< HEAD
                       {errors.email && <div className="text-red-500 text-xs mt-1">{errors.email}</div>}
                     </div>
                     <div>
@@ -215,6 +247,8 @@ const Profile = () => {
                         className={!isEditing ? "bg-muted" : ""}
                       />
                       {errors.website && <div className="text-red-500 text-xs mt-1">{errors.website}</div>}
+=======
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
                     </div>
                     <div>
                       <Label htmlFor="phone">Phone</Label>
@@ -225,7 +259,10 @@ const Profile = () => {
                         disabled={!isEditing}
                         className={!isEditing ? "bg-muted" : ""}
                       />
+<<<<<<< HEAD
                       {errors.phone && <div className="text-red-500 text-xs mt-1">{errors.phone}</div>}
+=======
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
                     </div>
                     <div>
                       <Label htmlFor="location">Location</Label>
@@ -261,6 +298,7 @@ const Profile = () => {
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
                 My Skills & Expertise
+<<<<<<< HEAD
                 <Button variant="outline" size="sm" onClick={handleAddSkill} disabled={skillsLoading}>
                   Add New Skill
                 </Button>
@@ -272,10 +310,19 @@ const Profile = () => {
             </CardHeader>
             <CardContent>
               {skillErrors && <div className="text-red-500 text-xs mb-2">{skillErrors}</div>}
+=======
+                <Button variant="outline" size="sm">
+                  Add New Skill
+                </Button>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
               <div className="space-y-4">
                 {skills.map((skill, index) => (
                   <div key={index} className="flex items-center justify-between p-4 border border-border rounded-lg">
                     <div className="flex-1">
+<<<<<<< HEAD
                       <input
                         className="font-medium text-foreground bg-transparent border-b border-border focus:outline-none focus:border-primary mr-2"
                         value={skill.name}
@@ -302,6 +349,22 @@ const Profile = () => {
                     </div>
                     <div className="flex space-x-2">
                       <Button variant="outline" size="sm" onClick={() => handleRemoveSkill(index)} disabled={skillsLoading}>Remove</Button>
+=======
+                      <h3 className="font-medium text-foreground">{skill.name}</h3>
+                      <div className="flex items-center space-x-4 mt-2">
+                        <Badge variant="secondary">{skill.level}</Badge>
+                        <span className="text-sm text-muted-foreground">
+                          ⭐ {skill.rating} rating
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                          {skill.students} students
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex space-x-2">
+                      <Button variant="outline" size="sm">Edit</Button>
+                      <Button variant="outline" size="sm">Remove</Button>
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
                     </div>
                   </div>
                 ))}

@@ -4,6 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Calendar } from "@/components/ui/calendar";
 import { Coins, Clock, Users, Star, Plus, Calendar as CalendarIcon } from "lucide-react";
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import { auth, db } from "@/lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -40,6 +41,19 @@ const Dashboard = () => {
     });
     return () => unsubscribe();
   }, []);
+=======
+import { useState } from "react";
+
+const Dashboard = () => {
+  const [date, setDate] = useState<Date | undefined>(new Date());
+
+  const userStats = {
+    skillCoins: 150,
+    totalSwaps: 23,
+    averageRating: 4.8,
+    hoursLearned: 45,
+  };
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
 
   const recentSwaps = [
     {
@@ -90,6 +104,7 @@ const Dashboard = () => {
     }
   };
 
+<<<<<<< HEAD
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -98,6 +113,8 @@ const Dashboard = () => {
     );
   }
 
+=======
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
   return (
     <div className="p-6">
       {/* Header */}

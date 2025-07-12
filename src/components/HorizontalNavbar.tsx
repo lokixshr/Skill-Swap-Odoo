@@ -1,9 +1,14 @@
 
+<<<<<<< HEAD
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Search, RefreshCcw, LayoutDashboard, User } from "lucide-react";
 import { auth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import { useState } from "react";
+=======
+import { NavLink, useLocation } from "react-router-dom";
+import { Search, RefreshCcw, LayoutDashboard, User } from "lucide-react";
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
 
 const navigationItems = [
   {
@@ -30,6 +35,7 @@ const navigationItems = [
 
 export function HorizontalNavbar() {
   const location = useLocation();
+<<<<<<< HEAD
   const navigate = useNavigate();
   const [signingOut, setSigningOut] = useState(false);
 
@@ -39,6 +45,8 @@ export function HorizontalNavbar() {
     setSigningOut(false);
     navigate("/");
   };
+=======
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
 
   return (
     <nav className="h-16 border-b border-border bg-background/95 backdrop-blur-sm">
@@ -75,6 +83,7 @@ export function HorizontalNavbar() {
           })}
         </div>
       </div>
+<<<<<<< HEAD
       {/* Sign Out Button */}
       <div className="flex items-center">
         <button
@@ -88,6 +97,8 @@ export function HorizontalNavbar() {
           Sign Out
         </button>
       </div>
+=======
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
     </nav>
   );
 }

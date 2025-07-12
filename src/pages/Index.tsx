@@ -62,6 +62,7 @@ const Index = () => {
               learn what you love, and build meaningful connections along the way.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+<<<<<<< HEAD
               <NavLink to="/auth">
                 <Button variant="outline" size="lg" className="px-8 py-3">
                   Sign In / Sign Up
@@ -76,6 +77,20 @@ const Index = () => {
                   window.location.href = "/explore";
                 }}
               >
+=======
+              <NavLink to="/browse">
+                <Button size="lg" className="group bg-primary hover:bg-primary-hover text-primary-foreground px-8 py-3">
+                  Browse Skills
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
+                </Button>
+              </NavLink>
+              <NavLink to="/dashboard">
+                <Button variant="outline" size="lg" className="px-8 py-3">
+                  Sign Up Free
+                </Button>
+              </NavLink>
+              <Button variant="ghost" size="lg" className="px-8 py-3">
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
                 Explore
               </Button>
             </div>

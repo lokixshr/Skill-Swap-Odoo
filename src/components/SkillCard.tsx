@@ -6,7 +6,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Star, Clock, MessageCircle, User, CheckCircle, Coins, Heart } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
+=======
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
 
 interface SkillCardProps {
   id: number;
@@ -30,7 +33,10 @@ const SkillCard = ({ id, user, skill, availability }: SkillCardProps) => {
   const [userCoins] = useState(50); // Mock user coins
   const requestCost = 5; // Cost per swap request
   const { toast } = useToast();
+<<<<<<< HEAD
   const navigate = useNavigate();
+=======
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
 
   const getLevelColor = (level: string) => {
     switch (level) {
@@ -71,11 +77,27 @@ const SkillCard = ({ id, user, skill, availability }: SkillCardProps) => {
   };
 
   const handleViewProfile = () => {
+<<<<<<< HEAD
     navigate(`/user/${id}`);
   };
 
   const handleMessage = () => {
     navigate(`/messages/${id}`);
+=======
+    toast({
+      title: "Opening Profile",
+      description: `Viewing ${user.name}'s complete skill profile and reviews...`,
+    });
+    // In a real app, this would navigate to the user's profile page
+  };
+
+  const handleMessage = () => {
+    toast({
+      title: "Starting Conversation",
+      description: `Opening direct message with ${user.name}...`,
+    });
+    // In a real app, this would open the messaging interface
+>>>>>>> 0ce1cdd4107b5a3b523a7b613d4f6a9d2460daf0
   };
 
   const handleFavorite = () => {
