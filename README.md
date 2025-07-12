@@ -1,8 +1,11 @@
 # Skill Swap Odoo
 
-## 📁 Project Info
-
-**Project Folder**: `skillswap/client`  
+##Team Information:
+Team Name: CodeBloodedDuo
+Team Size: 2
+Team Leader: Laukik Dharmeshkumar Rajput (BlockChain + Fullstack Developer)
+Member 1: Hem Ajit Patel (Machine Learning + Fullstack Developoer)
+  
 **Tech Stack**:  
 - Vite  
 - TypeScript  
