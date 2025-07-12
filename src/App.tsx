@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import Browse from "./pages/Browse";
 import Dashboard from "./pages/Dashboard";
 import MySwaps from "./pages/MySwaps";
+import Profile from "./pages/Profile";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
@@ -39,6 +40,11 @@ const App = () => (
             <Route path="/dashboard" element={
               <AuthenticatedLayout>
                 <Dashboard />
+              </AuthenticatedLayout>
+            } />
+            <Route path="/profile" element={
+              <AuthenticatedLayout>
+                <Profile />
               </AuthenticatedLayout>
             } />
             <Route path="/admin" element={

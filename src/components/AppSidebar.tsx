@@ -67,16 +67,11 @@ export function AppSidebar() {
                       asChild
                       isActive={isActive}
                       className="w-full justify-start"
+                      tooltip={isCollapsed ? item.title : undefined}
                     >
                       <NavLink
                         to={item.url}
-                        className={({ isActive }) =>
-                          `flex items-center space-x-3 px-3 py-2 rounded-md transition-all duration-200 ${
-                            isActive
-                              ? "bg-primary/10 text-primary font-medium"
-                              : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                          }`
-                        }
+                        className="flex items-center space-x-3 px-3 py-2 rounded-md transition-all duration-200 w-full"
                       >
                         <item.icon className="h-5 w-5 flex-shrink-0" />
                         {!isCollapsed && <span>{item.title}</span>}
