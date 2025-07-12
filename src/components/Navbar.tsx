@@ -1,12 +1,15 @@
+
 import { NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { User } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isHidden, setIsHidden] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  
   const navItems = [
     { to: "/", label: "Home" },
     { to: "/browse", label: "Browse Skills" },
@@ -15,19 +18,37 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
-    // Hide navbar when on browse page or if explicitly hidden
+    // Auto-hide on browse page
     setIsHidden(location.pathname === '/browse');
   }, [location.pathname]);
 
-  const handleNavigation = (path: string) => {
+  const handleSmartNavigation = (path: string) => {
+    // Smart hiding for specific routes
     if (path === '/browse') {
       setIsHidden(true);
+      setTimeout(() => navigate(path), 200);
+    } else {
+      navigate(path);
     }
+  };
+
+  const handleBrowseSkillsClick = () => {
+    setIsHidden(true);
+    setTimeout(() => navigate('/browse'), 300);
   };
 
   const handleSignUpClick = () => {
     setIsHidden(true);
-    // Add sign up logic here
+    // Add sign up logic here - could navigate to signup page or open modal
+    setTimeout(() => {
+      // For now, just show a notification and restore navbar
+      setIsHidden(false);
+    }, 2000);
+  };
+
+  const handleExploreSkillsClick = () => {
+    setIsHidden(true);
+    setTimeout(() => navigate('/browse'), 300);
   };
 
   return (
@@ -37,7 +58,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <NavLink to="/" className="flex items-center space-x-2">
+          <NavLink to="/" className="flex items-center space-x-2" onClick={() => setIsHidden(false)}>
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-sm">SS</span>
             </div>
@@ -50,7 +71,7 @@ const Navbar = () => {
               <NavLink
                 key={item.to}
                 to={item.to}
-                onClick={() => handleNavigation(item.to)}
+                onClick={() => handleSmartNavigation(item.to)}
                 className={({ isActive }) =>
                   `text-sm font-medium transition-all duration-200 relative ${
                     isActive
@@ -81,10 +102,34 @@ const Navbar = () => {
               Sign Up Free
             </Button>
           </div>
+
+          {/* Expose handlers for external use */}
+          <div className="hidden">
+            <button onClick={handleBrowseSkillsClick} data-testid="browse-skills-trigger" />
+            <button onClick={handleExploreSkillsClick} data-testid="explore-skills-trigger" />
+          </div>
         </div>
       </div>
     </nav>
   );
+};
+
+// Export handlers for use in other components
+export const useNavbarControls = () => {
+  const navigate = useNavigate();
+  
+  const triggerBrowseSkills = () => {
+    // Trigger navbar hide and navigate
+    const trigger = document.querySelector('[data-testid="browse-skills-trigger"]') as HTMLButtonElement;
+    if (trigger) trigger.click();
+  };
+
+  const triggerExploreSkills = () => {
+    const trigger = document.querySelector('[data-testid="explore-skills-trigger"]') as HTMLButtonElement;  
+    if (trigger) trigger.click();
+  };
+
+  return { triggerBrowseSkills, triggerExploreSkills };
 };
 
 export default Navbar;

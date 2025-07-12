@@ -1,7 +1,9 @@
+
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Star, Clock, MessageCircle, User, CheckCircle } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Star, Clock, MessageCircle, User, CheckCircle, Coins, Heart } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -23,7 +25,11 @@ interface SkillCardProps {
 const SkillCard = ({ id, user, skill, availability }: SkillCardProps) => {
   const [isRequested, setIsRequested] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isFavorited, setIsFavorited] = useState(false);
+  const [userCoins] = useState(50); // Mock user coins
+  const requestCost = 5; // Cost per swap request
   const { toast } = useToast();
+
   const getLevelColor = (level: string) => {
     switch (level) {
       case "Beginner":
@@ -38,110 +44,167 @@ const SkillCard = ({ id, user, skill, availability }: SkillCardProps) => {
   };
 
   const handleSwapRequest = async () => {
+    if (userCoins < requestCost) {
+      toast({
+        title: "Insufficient Coins",
+        description: `You need ${requestCost} coins to send a swap request. You have ${userCoins} coins.`,
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Simulate API call with realistic delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
     
     setIsRequested(true);
     setIsLoading(false);
     
     toast({
       title: "Swap Request Sent! ✨",
-      description: `Your request to learn ${skill.title} from ${user.name} has been sent.`,
-      duration: 3000,
+      description: `Your request to learn ${skill.title} from ${user.name} has been sent. ${requestCost} coins deducted.`,
+      duration: 4000,
     });
   };
 
   const handleViewProfile = () => {
     toast({
-      title: "Profile View",
-      description: `Viewing ${user.name}'s profile...`,
+      title: "Opening Profile",
+      description: `Viewing ${user.name}'s complete skill profile and reviews...`,
     });
+    // In a real app, this would navigate to the user's profile page
   };
 
   const handleMessage = () => {
     toast({
-      title: "Message Sent",
-      description: `Opening chat with ${user.name}...`,
+      title: "Starting Conversation",
+      description: `Opening direct message with ${user.name}...`,
+    });
+    // In a real app, this would open the messaging interface
+  };
+
+  const handleFavorite = () => {
+    setIsFavorited(!isFavorited);
+    toast({
+      title: isFavorited ? "Removed from Favorites" : "Added to Favorites",
+      description: isFavorited 
+        ? `Removed ${user.name}'s ${skill.title} from your favorites`
+        : `Added ${user.name}'s ${skill.title} to your favorites`,
     });
   };
 
   return (
-    <div className="bg-card border border-border rounded-lg p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 group">
-      {/* User Info */}
-      <div className="flex items-center space-x-3 mb-4">
-        <Avatar className="h-12 w-12">
-          <AvatarImage src={user.avatar} alt={user.name} />
-          <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
-        </Avatar>
-        <div className="flex-1">
-          <h3 className="font-medium text-card-foreground">{user.name}</h3>
-          <div className="flex items-center space-x-1">
-            <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-            <span className="text-sm text-muted-foreground">{user.rating}</span>
+    <Card className="group relative overflow-hidden border border-border hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2 bg-card">
+      {/* Favorite Button */}
+      <Button 
+        variant="ghost" 
+        size="sm" 
+        className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+        onClick={handleFavorite}
+      >
+        <Heart className={`h-4 w-4 ${isFavorited ? 'fill-red-500 text-red-500' : 'text-muted-foreground'}`} />
+      </Button>
+
+      <CardContent className="p-6">
+        {/* User Info */}
+        <div className="flex items-center space-x-3 mb-4">
+          <Avatar className="h-12 w-12 ring-2 ring-primary/10">
+            <AvatarImage src={user.avatar} alt={user.name} />
+            <AvatarFallback className="bg-primary/10 text-primary font-medium">
+              {user.name.split(' ').map(n => n[0]).join('')}
+            </AvatarFallback>
+          </Avatar>
+          <div className="flex-1">
+            <h3 className="font-semibold text-card-foreground hover:text-primary transition-colors duration-200 cursor-pointer" onClick={handleViewProfile}>
+              {user.name}
+            </h3>
+            <div className="flex items-center space-x-1">
+              <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+              <span className="text-sm text-muted-foreground font-medium">{user.rating}</span>
+              <span className="text-xs text-muted-foreground ml-2">• Verified</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Skill Details */}
-      <div className="space-y-3 mb-4">
-        <h4 className="font-semibold text-lg text-card-foreground group-hover:text-primary transition-colors duration-200">
-          {skill.title}
-        </h4>
-        <div className="flex items-center justify-between">
-          <Badge variant="secondary" className={getLevelColor(skill.level)}>
-            {skill.level}
-          </Badge>
-          <span className="text-sm text-muted-foreground">{skill.category}</span>
+        {/* Skill Details */}
+        <div className="space-y-3 mb-4">
+          <h4 className="font-bold text-lg text-card-foreground group-hover:text-primary transition-colors duration-200">
+            {skill.title}
+          </h4>
+          <div className="flex items-center justify-between">
+            <Badge variant="secondary" className={`${getLevelColor(skill.level)} font-medium`}>
+              {skill.level}
+            </Badge>
+            <span className="text-sm text-muted-foreground font-medium">{skill.category}</span>
+          </div>
         </div>
-      </div>
 
-      {/* Availability */}
-      <div className="flex items-center space-x-2 mb-4 text-sm text-muted-foreground">
-        <Clock className="h-4 w-4" />
-        <span>{availability}</span>
-      </div>
-
-      {/* Action Buttons */}
-      <div className="space-y-2">
-        <Button 
-          variant={isRequested ? "outline" : "default"} 
-          className={`w-full transition-all duration-300 ${
-            isRequested 
-              ? "bg-green-50 border-green-200 text-green-700 hover:bg-green-100 dark:bg-green-900/10 dark:border-green-800 dark:text-green-400" 
-              : ""
-          }`}
-          onClick={handleSwapRequest}
-          disabled={isLoading || isRequested}
-        >
-          {isLoading ? (
-            <div className="flex items-center">
-              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current mr-2"></div>
-              Sending...
-            </div>
-          ) : isRequested ? (
-            <div className="flex items-center">
-              <CheckCircle className="h-4 w-4 mr-2" />
-              Request Sent
-            </div>
-          ) : (
-            "Request Swap"
-          )}
-        </Button>
-        
-        <div className="flex gap-2">
-          <Button variant="outline" size="sm" className="flex-1" onClick={handleViewProfile}>
-            <User className="h-3 w-3 mr-1" />
-            Profile
-          </Button>
-          <Button variant="outline" size="sm" className="flex-1" onClick={handleMessage}>
-            <MessageCircle className="h-3 w-3 mr-1" />
-            Message
-          </Button>
+        {/* Availability */}
+        <div className="flex items-center space-x-2 mb-4 text-sm">
+          <Clock className="h-4 w-4 text-primary" />
+          <span className="text-muted-foreground">Available {availability}</span>
         </div>
-      </div>
-    </div>
+
+        {/* Pricing */}
+        <div className="flex items-center space-x-2 mb-4 p-2 bg-primary/5 rounded-lg">
+          <Coins className="h-4 w-4 text-primary" />
+          <span className="text-sm font-medium text-primary">{requestCost} coins per request</span>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="space-y-3">
+          <Button 
+            variant={isRequested ? "outline" : "default"} 
+            className={`w-full transition-all duration-300 font-medium ${
+              isRequested 
+                ? "bg-green-50 border-green-200 text-green-700 hover:bg-green-100 dark:bg-green-900/10 dark:border-green-800 dark:text-green-400" 
+                : "hover:shadow-md"
+            }`}
+            onClick={handleSwapRequest}
+            disabled={isLoading || isRequested}
+          >
+            {isLoading ? (
+              <div className="flex items-center">
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current mr-2"></div>
+                Sending Request...
+              </div>
+            ) : isRequested ? (
+              <div className="flex items-center">
+                <CheckCircle className="h-4 w-4 mr-2" />
+                Request Sent
+              </div>
+            ) : (
+              <div className="flex items-center">
+                <Coins className="h-4 w-4 mr-2" />
+                Request Swap ({requestCost} coins)
+              </div>
+            )}
+          </Button>
+          
+          <div className="flex gap-2">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="flex-1 hover:bg-primary/5 hover:border-primary/20 transition-all duration-200" 
+              onClick={handleViewProfile}
+            >
+              <User className="h-3 w-3 mr-1" />
+              Profile
+            </Button>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="flex-1 hover:bg-primary/5 hover:border-primary/20 transition-all duration-200" 
+              onClick={handleMessage}
+            >
+              <MessageCircle className="h-3 w-3 mr-1" />
+              Message
+            </Button>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 
