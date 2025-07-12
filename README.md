@@ -33,7 +33,7 @@ The development server will start, and the app will be live at http://localhost:
 ---
 
 ## 📁 Folder Structure
-
+```Folder structure
 Odoo_Skill_Swap
 ├── .git
 │   ├── COMMIT_EDITMSG
@@ -168,7 +168,7 @@ Odoo_Skill_Swap
 ├── tsconfig.json
 ├── tsconfig.node.json
 └── vite.config.ts
-
+```
 ---
 
 ## 🧪 Tech Stack Overview
