@@ -1,6 +1,9 @@
 
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Search, RefreshCcw, LayoutDashboard, User } from "lucide-react";
+import { auth } from "@/lib/firebase";
+import { signOut } from "firebase/auth";
+import { useState } from "react";
 
 const navigationItems = [
   {
@@ -27,6 +30,15 @@ const navigationItems = [
 
 export function HorizontalNavbar() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const [signingOut, setSigningOut] = useState(false);
+
+  const handleSignOut = async () => {
+    setSigningOut(true);
+    await signOut(auth);
+    setSigningOut(false);
+    navigate("/");
+  };
 
   return (
     <nav className="h-16 border-b border-border bg-background/95 backdrop-blur-sm">
@@ -62,6 +74,19 @@ export function HorizontalNavbar() {
             );
           })}
         </div>
+      </div>
+      {/* Sign Out Button */}
+      <div className="flex items-center">
+        <button
+          onClick={handleSignOut}
+          className="ml-4 px-4 py-2 rounded-md border border-border bg-background text-foreground hover:bg-muted transition-all flex items-center"
+          disabled={signingOut}
+        >
+          {signingOut ? (
+            <svg className="animate-spin h-5 w-5 mr-2 text-primary" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" /></svg>
+          ) : null}
+          Sign Out
+        </button>
       </div>
     </nav>
   );

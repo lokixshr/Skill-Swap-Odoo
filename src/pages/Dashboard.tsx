@@ -4,17 +4,42 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Calendar } from "@/components/ui/calendar";
 import { Coins, Clock, Users, Star, Plus, Calendar as CalendarIcon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { auth, db } from "@/lib/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { Loader2 } from "lucide-react";
 
 const Dashboard = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
+  const [loading, setLoading] = useState(true);
+  const [userStats, setUserStats] = useState({
+    skillCoins: 0,
+    totalSwaps: 0,
+    averageRating: 0,
+    hoursLearned: 0,
+  });
 
-  const userStats = {
-    skillCoins: 150,
-    totalSwaps: 23,
-    averageRating: 4.8,
-    hoursLearned: 45,
-  };
+  useEffect(() => {
+    setLoading(true);
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        const docRef = doc(db, "users", firebaseUser.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setUserStats({
+            skillCoins: data.skillCoins || 0,
+            totalSwaps: data.totalSwaps || 0,
+            averageRating: data.averageRating || 0,
+            hoursLearned: data.hoursLearned || 0,
+          });
+        }
+      }
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const recentSwaps = [
     {
@@ -64,6 +89,14 @@ const Dashboard = () => {
         return "bg-gray-100 text-gray-800";
     }
   };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader2 className="animate-spin h-10 w-10 text-primary" />
+      </div>
+    );
+  }
 
   return (
     <div className="p-6">

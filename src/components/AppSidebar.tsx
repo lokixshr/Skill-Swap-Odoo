@@ -1,6 +1,6 @@
 
 import { NavLink, useLocation } from "react-router-dom";
-import { Search, RefreshCcw, LayoutDashboard, User } from "lucide-react";
+import { Search, RefreshCcw, LayoutDashboard, User, MessageCircle } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -29,6 +29,11 @@ const navigationItems = [
     icon: LayoutDashboard,
   },
   {
+    title: "Messages",
+    url: "/messages",
+    icon: MessageCircle,
+  },
+  {
     title: "Profile",
     url: "/profile",
     icon: User,
@@ -46,9 +51,7 @@ export function AppSidebar() {
         {/* Brand */}
         <div className="p-4 border-b border-border">
           <div className="flex items-center space-x-2 cursor-default">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">SS</span>
-            </div>
+            <img src="/logo.svg" alt="SkillSwap Logo" className="w-8 h-8 rounded-lg" />
             {!isCollapsed && (
               <span className="font-semibold text-lg text-foreground">SkillSwap</span>
             )}

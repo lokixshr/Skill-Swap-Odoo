@@ -62,18 +62,20 @@ const Index = () => {
               learn what you love, and build meaningful connections along the way.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <NavLink to="/browse">
-                <Button size="lg" className="group bg-primary hover:bg-primary-hover text-primary-foreground px-8 py-3">
-                  Browse Skills
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
-                </Button>
-              </NavLink>
-              <NavLink to="/dashboard">
+              <NavLink to="/auth">
                 <Button variant="outline" size="lg" className="px-8 py-3">
-                  Sign Up Free
+                  Sign In / Sign Up
                 </Button>
               </NavLink>
-              <Button variant="ghost" size="lg" className="px-8 py-3">
+              <Button
+                variant="ghost"
+                size="lg"
+                className="px-8 py-3"
+                onClick={() => {
+                  // Placeholder for auth-aware navigation logic
+                  window.location.href = "/explore";
+                }}
+              >
                 Explore
               </Button>
             </div>
