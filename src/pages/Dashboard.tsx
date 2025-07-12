@@ -66,173 +66,171 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="pt-20 pb-12">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Dashboard</h1>
-          <p className="text-lg text-muted-foreground">
-            Track your learning journey and skill exchanges
-          </p>
-        </div>
+    <div className="p-6">
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-foreground mb-2">Dashboard</h1>
+        <p className="text-lg text-muted-foreground">
+          Track your learning journey and skill exchanges
+        </p>
+      </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card className="shadow-card hover:shadow-card-hover transition-all duration-200">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
-                <Coins className="h-4 w-4 mr-2 text-yellow-500" />
-                Skill Coins
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-foreground">{userStats.skillCoins}</div>
-              <p className="text-xs text-muted-foreground">+12 this week</p>
-            </CardContent>
-          </Card>
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <Card className="shadow-card hover:shadow-card-hover transition-all duration-200">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
+              <Coins className="h-4 w-4 mr-2 text-yellow-500" />
+              Skill Coins
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-foreground">{userStats.skillCoins}</div>
+            <p className="text-xs text-muted-foreground">+12 this week</p>
+          </CardContent>
+        </Card>
 
-          <Card className="shadow-card hover:shadow-card-hover transition-all duration-200">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
-                <Users className="h-4 w-4 mr-2 text-blue-500" />
-                Total Swaps
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-foreground">{userStats.totalSwaps}</div>
-              <p className="text-xs text-muted-foreground">+3 this month</p>
-            </CardContent>
-          </Card>
+        <Card className="shadow-card hover:shadow-card-hover transition-all duration-200">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
+              <Users className="h-4 w-4 mr-2 text-blue-500" />
+              Total Swaps
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-foreground">{userStats.totalSwaps}</div>
+            <p className="text-xs text-muted-foreground">+3 this month</p>
+          </CardContent>
+        </Card>
 
-          <Card className="shadow-card hover:shadow-card-hover transition-all duration-200">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
-                <Star className="h-4 w-4 mr-2 text-purple-500" />
-                Rating
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-foreground">{userStats.averageRating}</div>
-              <p className="text-xs text-muted-foreground">Excellent rating</p>
-            </CardContent>
-          </Card>
+        <Card className="shadow-card hover:shadow-card-hover transition-all duration-200">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
+              <Star className="h-4 w-4 mr-2 text-purple-500" />
+              Rating
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-foreground">{userStats.averageRating}</div>
+            <p className="text-xs text-muted-foreground">Excellent rating</p>
+          </CardContent>
+        </Card>
 
-          <Card className="shadow-card hover:shadow-card-hover transition-all duration-200">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
-                <Clock className="h-4 w-4 mr-2 text-green-500" />
-                Hours Learned
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-foreground">{userStats.hoursLearned}</div>
-              <p className="text-xs text-muted-foreground">This quarter</p>
-            </CardContent>
-          </Card>
-        </div>
+        <Card className="shadow-card hover:shadow-card-hover transition-all duration-200">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
+              <Clock className="h-4 w-4 mr-2 text-green-500" />
+              Hours Learned
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-foreground">{userStats.hoursLearned}</div>
+            <p className="text-xs text-muted-foreground">This quarter</p>
+          </CardContent>
+        </Card>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Recent Swaps */}
-          <div className="lg:col-span-2">
-            <Card className="shadow-card">
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  Recent Swaps
-                  <Button variant="outline" size="sm">
-                    View All
-                  </Button>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {recentSwaps.map((swap) => (
-                    <div key={swap.id} className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-muted/50 transition-colors duration-200">
-                      <div className="flex items-center space-x-3">
-                        <Avatar className="h-10 w-10">
-                          <AvatarImage src={swap.partnerAvatar} alt={swap.partner} />
-                          <AvatarFallback>{swap.partner.charAt(0)}</AvatarFallback>
-                        </Avatar>
-                        <div>
-                          <p className="font-medium text-foreground">{swap.partner}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {swap.skillOffered} ↔ {swap.skillReceived}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <Badge className={getStatusColor(swap.status)}>
-                          {swap.status}
-                        </Badge>
-                        <p className="text-xs text-muted-foreground mt-1">{swap.date}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* My Skills */}
-            <Card className="shadow-card mt-6">
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  My Skills
-                  <Button variant="outline" size="sm">
-                    <Plus className="h-4 w-4 mr-2" />
-                    Add Skill
-                  </Button>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {mySkills.map((skill, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 border border-border rounded-lg">
-                      <div>
-                        <p className="font-medium text-foreground">{skill.name}</p>
-                        <p className="text-sm text-muted-foreground">Level: {skill.level}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="font-medium text-foreground">{skill.students}</p>
-                        <p className="text-xs text-muted-foreground">students</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Calendar */}
-          <div>
-            <Card className="shadow-card">
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <CalendarIcon className="h-5 w-5 mr-2" />
-                  Availability
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Calendar
-                  mode="single"
-                  selected={date}
-                  onSelect={setDate}
-                  className="rounded-md border pointer-events-auto"
-                />
-                <div className="mt-4 space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Next session:</span>
-                    <span className="font-medium">Tomorrow, 2 PM</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Available slots:</span>
-                    <span className="font-medium">3 this week</span>
-                  </div>
-                </div>
-                <Button variant="outline" className="w-full mt-4">
-                  Manage Schedule
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Recent Swaps */}
+        <div className="lg:col-span-2">
+          <Card className="shadow-card">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                Recent Swaps
+                <Button variant="outline" size="sm">
+                  View All
                 </Button>
-              </CardContent>
-            </Card>
-          </div>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {recentSwaps.map((swap) => (
+                  <div key={swap.id} className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-muted/50 transition-colors duration-200">
+                    <div className="flex items-center space-x-3">
+                      <Avatar className="h-10 w-10">
+                        <AvatarImage src={swap.partnerAvatar} alt={swap.partner} />
+                        <AvatarFallback>{swap.partner.charAt(0)}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-medium text-foreground">{swap.partner}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {swap.skillOffered} ↔ {swap.skillReceived}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <Badge className={getStatusColor(swap.status)}>
+                        {swap.status}
+                      </Badge>
+                      <p className="text-xs text-muted-foreground mt-1">{swap.date}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* My Skills */}
+          <Card className="shadow-card mt-6">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                My Skills
+                <Button variant="outline" size="sm">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Add Skill
+                </Button>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {mySkills.map((skill, index) => (
+                  <div key={index} className="flex items-center justify-between p-4 border border-border rounded-lg">
+                    <div>
+                      <p className="font-medium text-foreground">{skill.name}</p>
+                      <p className="text-sm text-muted-foreground">Level: {skill.level}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-medium text-foreground">{skill.students}</p>
+                      <p className="text-xs text-muted-foreground">students</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Calendar */}
+        <div>
+          <Card className="shadow-card">
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <CalendarIcon className="h-5 w-5 mr-2" />
+                Availability
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Calendar
+                mode="single"
+                selected={date}
+                onSelect={setDate}
+                className="rounded-md border pointer-events-auto"
+              />
+              <div className="mt-4 space-y-2">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">Next session:</span>
+                  <span className="font-medium">Tomorrow, 2 PM</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">Available slots:</span>
+                  <span className="font-medium">3 this week</span>
+                </div>
+              </div>
+              <Button variant="outline" className="w-full mt-4">
+                Manage Schedule
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

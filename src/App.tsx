@@ -1,9 +1,10 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import { AuthenticatedLayout } from "./components/AuthenticatedLayout";
 import Index from "./pages/Index";
 import Browse from "./pages/Browse";
 import Dashboard from "./pages/Dashboard";
@@ -20,13 +21,33 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <div className="min-h-screen bg-background">
-          <Navbar />
           <Routes>
+            {/* Landing page - no sidebar */}
             <Route path="/" element={<Index />} />
-            <Route path="/browse" element={<Browse />} />
-            <Route path="/swaps" element={<MySwaps />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/admin" element={<Admin />} />
+            
+            {/* Authenticated pages - with sidebar */}
+            <Route path="/browse" element={
+              <AuthenticatedLayout>
+                <Browse />
+              </AuthenticatedLayout>
+            } />
+            <Route path="/swaps" element={
+              <AuthenticatedLayout>
+                <MySwaps />
+              </AuthenticatedLayout>
+            } />
+            <Route path="/dashboard" element={
+              <AuthenticatedLayout>
+                <Dashboard />
+              </AuthenticatedLayout>
+            } />
+            <Route path="/admin" element={
+              <AuthenticatedLayout>
+                <Admin />
+              </AuthenticatedLayout>
+            } />
+            
+            {/* 404 page */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
