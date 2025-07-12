@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # SkillSwap - Skill Exchange Platform
 
 A modern web application for skill sharing and learning, built with React, TypeScript, and Firebase.
