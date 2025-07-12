@@ -15,7 +15,7 @@ export function AuthenticatedLayout({ children }: AuthenticatedLayoutProps) {
         <div className="flex-1 flex flex-col">
           {/* Header with sidebar trigger */}
           <header className="h-16 border-b border-border flex items-center px-4 bg-background/95 backdrop-blur-sm">
-            <SidebarTrigger />
+            <SidebarTrigger className="cursor-pointer hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:scale-110 active:scale-95" />
           </header>
           
           {/* Main content */}
