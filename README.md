@@ -33,3 +33,35 @@ npm install
 
 # Step 4: Start the development server
 npm run dev
+```
+The development server will start, and the app will be live at http://localhost:5173 (or another port shown in the terminal).
+
+## 🧩 Editing the Code
+You can edit this project using:
+
+VS Code or any other IDE
+
+GitHub Web Interface (click the pencil icon on any file)
+
+GitHub Codespaces (launch a full online IDE environment)
+
+Any changes you make can be committed and pushed to update the repository.
+
+## 🌐 Deployment
+To deploy this project manually:
+
+Build the project:
+
+```bash
+npm run build
+```
+Deploy the contents of the dist folder to your preferred hosting provider
+(e.g. Netlify, Vercel, GitHub Pages, or your custom domain).
+
+## 🔗 Custom Domain Setup
+If you're hosting it under a custom domain:
+
+Configure your domain’s DNS to point to your deployment
+
+Most hosting platforms (e.g. Vercel, Netlify) provide easy custom domain setup in their dashboards
+
