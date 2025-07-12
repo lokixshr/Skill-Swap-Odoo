@@ -40,64 +40,70 @@ npm run dev
 The development server will start, and the app will be live at http://localhost:5173 (or another port shown in the terminal).
 
 ## 🧩 Editing the Code
-You can edit this project using:
 
-VS Code or any other IDE
+-You can edit this project using:
 
-GitHub Web Interface (click the pencil icon on any file)
+-VS Code or any other IDE
 
-GitHub Codespaces (launch a full online IDE environment)
+-GitHub Web Interface (click the pencil icon on any file)
 
-Any changes you make can be committed and pushed to update the repository.
+-GitHub Codespaces (launch a full online IDE environment)
+
+-Any changes you make can be committed and pushed to update the repository.
 
 ## 💡 Features
 ### 👤 User Profile
-Name, location (optional), profile photo (optional)
 
-List of skills offered
+-Name, location (optional), profile photo (optional)
 
-List of skills wanted
+-List of skills offered
 
-Availability (e.g., weekends, evenings)
+-List of skills wanted
 
-Public or private profile toggle
+-Availability (e.g., weekends, evenings)
+
+-Public or private profile toggle
 
 ### 🔍 Skill Browsing & Searching
-Browse users by skill (e.g., “Photoshop”, “Excel”)
 
-Filter by availability or interest
+-Browse users by skill (e.g., “Photoshop”, “Excel”)
+
+-Filter by availability or interest
 
 ### 🔁 Skill Swap System
-Send swap requests
 
-Accept or reject incoming requests
+-Send swap requests
 
-View current and pending swap statuses
+-Accept or reject incoming requests
 
-Cancel unaccepted swap offers
+-View current and pending swap statuses
 
-Rate or give feedback after swaps
+-Cancel unaccepted swap offers
+
+-Rate or give feedback after swaps
 
 ### 🔒 Admin Role
-Admins have platform-wide control with the following abilities:
 
-Reject inappropriate or spammy skill descriptions
+-Admins have platform-wide control with the following abilities:
 
-Ban users violating platform policies
+-Reject inappropriate or spammy skill descriptions
 
-Monitor all swap activity (pending, accepted, cancelled)
+-Ban users violating platform policies
 
-Send platform-wide announcements (feature updates, downtime alerts)
+-Monitor all swap activity (pending, accepted, cancelled)
 
-Download reports on:
+-Send platform-wide announcements (feature updates, downtime alerts)
 
-User activity
+-Download reports on:
 
-Feedback logs
+-User activity
 
-Swap statistics
+-Feedback logs
+
+-Swap statistics
 
 ## 🌐 Deployment
+
 To deploy this project manually:
 
 Build the project:
@@ -109,6 +115,7 @@ Deploy the contents of the dist folder to your preferred hosting provider
 (e.g. Netlify, Vercel, GitHub Pages, or your custom domain).
 
 ## 🔗 Custom Domain Setup
+
 If you're hosting it under a custom domain:
 
 Configure your domain’s DNS to point to your deployment
