@@ -154,26 +154,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            Ready to Start Your Learning Journey?
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Join thousands of learners who are already expanding their skills through meaningful exchanges
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <NavLink to="/browse">
-              <Button variant="cta" size="lg">
-                Explore Skills Now
-              </Button>
-            </NavLink>
-            <Button variant="outline" size="lg">
-              Sign Up Free
-            </Button>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Footer */}
       <footer className="bg-muted/50 py-12 px-6 border-t border-border">
