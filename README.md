@@ -299,3 +299,18 @@ Configure your domain’s DNS to point to your deployment
 Most hosting platforms (e.g. Vercel, Netlify) provide easy custom domain setup in their dashboards
 
 >Made by Laukik And Hem
+
+# My Project
+
+## Contributors (Humans Only)
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/hemathens">
+        <img src="https://avatars.githubusercontent.com/hemathens" width="100px;" alt=""/>
+        <br />
+        <sub><b>Hem Patel</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
