@@ -47,6 +47,53 @@ GitHub Codespaces (launch a full online IDE environment)
 
 Any changes you make can be committed and pushed to update the repository.
 
+## 💡 Features
+### 👤 User Profile
+Name, location (optional), profile photo (optional)
+
+List of skills offered
+
+List of skills wanted
+
+Availability (e.g., weekends, evenings)
+
+Public or private profile toggle
+
+### 🔍 Skill Browsing & Searching
+Browse users by skill (e.g., “Photoshop”, “Excel”)
+
+Filter by availability or interest
+
+### 🔁 Skill Swap System
+Send swap requests
+
+Accept or reject incoming requests
+
+View current and pending swap statuses
+
+Cancel unaccepted swap offers
+
+Rate or give feedback after swaps
+
+### 🔒 Admin Role
+Admins have platform-wide control with the following abilities:
+
+Reject inappropriate or spammy skill descriptions
+
+Ban users violating platform policies
+
+Monitor all swap activity (pending, accepted, cancelled)
+
+Send platform-wide announcements (feature updates, downtime alerts)
+
+Download reports on:
+
+User activity
+
+Feedback logs
+
+Swap statistics
+
 ## 🌐 Deployment
 To deploy this project manually:
 
